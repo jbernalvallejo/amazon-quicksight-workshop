@@ -68,3 +68,78 @@
     Your new view is created:
 
     ![screenshot](img/9.png)
+
+1. Copy the following SQL syntax into the New Query 2 tab and click on **Save Query**.
+
+    ```sql
+    SELECT t.id AS ticket_id,
+        e.event_id,
+        e.sport,
+        e.event_date_time,
+        e.home_team,
+        e.away_team,
+        e.location,
+        e.city,
+        t.seat_level,
+        t.seat_section,
+        t.seat_row,
+        t.seat,
+        t.ticket_price,
+        p.full_name AS ticketholder
+    FROM sporting_event_info e,
+        parquet_sporting_event_ticket t,
+        parquet_person p
+    WHERE 
+        t.sporting_event_id = e.event_id
+        AND t.ticketholder_id = p.id
+    ```
+
+    ![screenshot](img/10.png)
+
+    Click on **Save as** button and give this query the name **create_view_sporting_event_ticket_info**, some description and then, click on **Save**. 
+
+    ![screenshot](img/11.png)
+
+    Back to the query editor, you will see the query name changed. Now, click on **Run Query**.
+    
+    ![screenshot](img/12.png)
+
+    The results appear beneath the query window.
+
+    ![screenshot](img/13.png)
+
+1. As shown above click **Create view from query**.
+
+1. Name the view "sporting_event_ticket_info" and click **Create**.
+
+    ![screenshot](img/14.png)
+
+1. Copy the following SQL syntax into the New Query 3 tab.
+
+    ```sql
+    SELECT 
+        sport, 
+        count(distinct location) as locations, 
+        count(distinct event_id) as events, 
+        count(*) as tickets,
+        avg(ticket_price) as avg_ticket_price
+    FROM sporting_event_ticket_info 
+    GROUP BY 1
+    ORDER BY 1;
+    ```
+
+    Click on **Save as** and give the query name "analytics_sporting_event_ticket_info" and some description and then, click on **Save**.
+
+    ![screenshot](img/15.png)
+
+    The name of the New Query 3 will be changed to one assigned in previous step. Click on **Run Query**.
+
+    ![screenshot](img/16.png)
+
+    You query returns two results in approximately five seconds.
+
+    ![screenshot](img/17.png)
+
+    The purpose of saving the queries is to have clear distinction between the results of the queries running on one view. Otherwise, your query results will be saved under “Unsaved” folder within the S3 bucket location provided to Athena to store query results. Please navigate to S3 bucket to observe these changes, as shown below:
+
+    ![screenshot](img/18.png)
