@@ -70,15 +70,7 @@ You will now be taken to the QuickSight Visualize interface where you can start 
 
 Note: The SPICE dataset will take a few minutes to be built, but you can continue to create some charts on the underlying data.
 
-Create QuickSight Charts
 
-In this section we will take you through some of the different chart types.
-
-1.	In the Fields list, click the "ticket_price" column to populate the chart.
-
-2.	Click the expand icon in corner of "ticket_price" field and select format as currency to show numbers in dollar amount. 
-
-![screenshot](img/14.png)
 
 
 
