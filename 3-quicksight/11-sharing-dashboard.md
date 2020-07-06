@@ -37,7 +37,7 @@ Get back to our sporting_event_ticket_info analysis. Using the Share option you 
 
 Enter its name and click on Publish dashboard.
  
-![screenshot](img/55
+![screenshot](img/55.png)
 
 Once clicked, you need to enter which users you would like to share it with. Type here the name of the user you created before and share the dashboard: 
 
