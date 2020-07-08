@@ -1,6 +1,6 @@
 ![logo](_media/logo256.png)
 
-# Amaozon QuickSight Workshop <small>0.1</small>
+# Amazon QuickSight Workshop <small>0.1</small>
 
 > Deliver insights to everyone in your organization
 

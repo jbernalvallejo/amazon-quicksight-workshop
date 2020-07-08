@@ -16,7 +16,7 @@ Follow these steps to access your AWS account for the day:
 
 3. Click on **AWS Console**. A pop-up will appear.
 
-	![](./event-engine-aws-console.png)
+	![](./event-engine-aws-console2.png)
 
 4. Click on **Open AWS Console**.  You will be taken to the AWS Management Console landing page.
 
