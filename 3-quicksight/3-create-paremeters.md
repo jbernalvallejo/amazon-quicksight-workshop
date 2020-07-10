@@ -19,10 +19,11 @@ In the next section we are going to create some parameters with controls for the
 ![screenshot](img/20.png)
 
 7.	Create another parameter with the following attributes:
-a.	Name: EventTo 
-b.	Data type: Datetime
-c.	For Default value, select the value from calendar as end date available in your graph for event_date_time. For example, 2021-01-01 00:00.
-d.	Click Create
+
+    - Name: EventTo 
+    - Data type: Datetime
+    - For Default value, select the value from calendar as end date available in your graph for event_date_time. For example, 2021-01-01 00:00.
+    - Click Create
  
 ![screenshot](img/21.png)
 
