@@ -21,3 +21,7 @@
   - [On the fly custom metrics](3-quicksight/9-on-the-fly-custom-metrics.md)
   - [Interactive filtering](3-quicksight/10-interfactive-filtering.md)
   - [Creating and sharing a dahsboard](3-quicksight/11-sharing-dashboard.md)
+
+- Athena Workgroups (Optional)
+
+  - [Controlling Query Access and Costs](4-bonus/1-athena-workgroups.md)

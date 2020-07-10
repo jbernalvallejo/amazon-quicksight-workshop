@@ -8,15 +8,15 @@ Follow these steps to access your AWS account for the day:
 
 1. Open a web browser and head to [https://dashboard.eventengine.run](https://dashboard.eventengine.run).
 
-	![](./event-engine-initial-screen.png)
+	![](./img/event-engine-initial-screen.png)
 
 2. Enter the provided hash in the text box. The button on the bottom right corner changes to **Accept Terms & Login**. Click on that button to continue.
 
-	![](./event-engine-dashboard.png)
+	![](./img/event-engine-dashboard.png)
 
 3. Click on **AWS Console**. A pop-up will appear.
 
-	![](./event-engine-aws-console2.png)
+	![](./img/event-engine-aws-console2.png)
 
 4. Click on **Open AWS Console**.  You will be taken to the AWS Management Console landing page.
 

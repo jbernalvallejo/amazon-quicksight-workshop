@@ -2,8 +2,10 @@
 Use workgroups to separate users, teams, applications, or workloads, to set limits on amount of data each query or the entire workgroup can process, and to track costs. Because workgroups act as resources, you can use resource-level identity-based policies to control access to a specific workgroup. You can also view query-related metrics in Amazon CloudWatch, control costs by configuring limits on the amount of data scanned, create thresholds, and trigger actions, such as Amazon SNS, when these thresholds are breached.
 Workflow setup to separate workloads
 For this lab, we will create two workgroups: “workgroupA” and “workgroupB”. Before creating the workgroups, you need to have users, appropriate IAM policies to assigned to each user and S3 buckets to store the query results. This has been created using Cloud Formation template for your convenience. It is recommended to go through the template for better understanding of pre-requisites. We will have two users: “business_analyst_user” and “workgroup_manager_user” created in IAM with different policies:
-•	The business_analyst_user will have access to workgroupA and query sporting_event_info table.
-•	The workgroup_manager_user will have access to both workgroups workgroupA and workgroupB for management purposes.
+
+- The business_analyst_user will have access to workgroupA and query sporting_event_info table.
+- The workgroup_manager_user will have access to both workgroups workgroupA and workgroupB for management purposes.
+
 The resources have been already created as part of the DMS Student lab. You can click on the CloudFormation stack and navigate to “Resources” to understand the different resources created with “DMSlab_student_CFN.json” template. Navigate to outputs section to see the results of resources created with description.
 
 ![screenshot](img/1.png)
@@ -80,7 +82,7 @@ Provide the S3 bucket location for workgroupA, copied and saved from the Output 
 
 ![screenshot](img/12.png)
 
-8. Logged in as “business_analyst_user”, click on “workgroup” and try switching to other workgroups which this user does not have access to. Select “workgroupB” and then click on “switch workgroup”.
+1. Logged in as “business_analyst_user”, click on “workgroup” and try switching to other workgroups which this user does not have access to. Select “workgroupB” and then click on “switch workgroup”.
 
 ![screenshot](img/13.png)
 

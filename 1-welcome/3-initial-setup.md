@@ -4,7 +4,7 @@ These are the different services and steps that happened for you to be able to d
 
 ![image](../_media/QuicksightLab.png ':size=750')
 
-This is what happened and was provided to you behind the scenes
+This is what happened and was provided to you behind the scenes:
 
 1. We provided the data that you will use in quicksight and is on a S3 bucket, you can go ahead a see it
 2. We have run a glue crawler that discovered the data and found out its structures 

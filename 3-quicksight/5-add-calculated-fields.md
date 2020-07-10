@@ -1,7 +1,5 @@
 # Add Calculated Fields
 
-Add Calculated Fields
-
 In the next section, you will learn, how to add calculated fields for "day of week" and "hour of day" to your dataset and a new scatter plot for these two dependent variables.
 
 1.	Click the Add button on the top left and select Add a calculated field.
