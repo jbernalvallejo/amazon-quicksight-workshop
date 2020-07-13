@@ -1,10 +1,10 @@
 # Athena Workgroups to Control Query Access and Costs (Optional)
 Use workgroups to separate users, teams, applications, or workloads, to set limits on amount of data each query or the entire workgroup can process, and to track costs. Because workgroups act as resources, you can use resource-level identity-based policies to control access to a specific workgroup. You can also view query-related metrics in Amazon CloudWatch, control costs by configuring limits on the amount of data scanned, create thresholds, and trigger actions, such as Amazon SNS, when these thresholds are breached.
 Workflow setup to separate workloads
-For this lab, we will create two workgroups: “workgroupA” and “workgroupB”. Before creating the workgroups, you need to have users, appropriate IAM policies to assigned to each user and S3 buckets to store the query results. This has been created using Cloud Formation template for your convenience. It is recommended to go through the template for better understanding of pre-requisites. We will have two users: “business_analyst_user” and “workgroup_manager_user” created in IAM with different policies:
 
-- The business_analyst_user will have access to workgroupA and query sporting_event_info table.
-- The workgroup_manager_user will have access to both workgroups workgroupA and workgroupB for management purposes.
+For this lab, we will create two workgroups: “workgroupA” and “workgroupB”. Before creating the workgroups, you need to have users, appropriate IAM policies to assigned to each user and S3 buckets to store the query results. This has been created using Cloud Formation template for your convenience. It is recommended to go through the template for better understanding of pre-requisites. We will have two users: “business_analyst_user” and “workgroup_manager_user” created in IAM with different policies:
+•	The business_analyst_user will have access to workgroupA and query sporting_event_info table.
+•	The workgroup_manager_user will have access to both workgroups workgroupA and workgroupB for management purposes.
 
 The resources have been already created as part of the DMS Student lab. You can click on the CloudFormation stack and navigate to “Resources” to understand the different resources created with “DMSlab_student_CFN.json” template. Navigate to outputs section to see the results of resources created with description.
 
@@ -22,24 +22,31 @@ Now we will create workgroups.
 ![screenshot](img/3.png)
 
 3.	Provide the following:
-•	a. Workgroup Name: “workgroupA”
-•	b. Description: (optional):
-o	i. “workgroupA for BusinessAnalystUser”
-o	ii. “workgroupB for workgroup manager user”
-•	c. Query result location: Provide the query location, You can find S3 bucket name from Cloudformation output tab of student lab
-o	i. For workgroupA, the s3 path would look something like: “s3:// dmslab-student-s3bucketworkgroupa-ldtj44qkwyle/”.
-o	ii. For workgroupB, provide S3 path as: “s3://dmslab-student-s3bucketworkgroupb-n2jrw40pfqcc/”.
-•	d. For “Encrypt query results”, leave as default i.e. unchecked. You can check this if you want your query results to be encrypted.
-•	e. Check the checkbox for “Metrics: Publish query metrics to AWS CloudWatch”
+
+	a. Workgroup Name: “workgroupA”
+
+	b. Description: (optional):
+		i. “workgroupA for BusinessAnalystUser”
+		ii. “workgroupB for workgroup manager user”
+
+	c. Query result location: Provide the query location, You can find S3 bucket name from Cloudformation output tab of student lab
+		i. For workgroupA, the s3 path would look something like: “s3:// dmslab-student-s3bucketworkgroupa-ldtj44qkwyle/”.
+		ii. For workgroupB, provide S3 path as: “s3://dmslab-student-s3bucketworkgroupb-n2jrw40pfqcc/”.
+
+	d. For “Encrypt query results”, leave as default i.e. unchecked. You can check this if you want your query results to be encrypted.
+
+ 	e. Check the checkbox for “Metrics: Publish query metrics to AWS CloudWatch”
 
 ![screenshot](img/4.png)
 
 4.	Provide the following:
-•	a. Optionally, you can click on Override client-side settings. This will override the client-side settings and keep the defaults for query execution and storing results.
-•	b. Tag your workgroup to analyze later with CloudWatch or perform any analytics on query execution and results.
-o	i. For workgroupA: provide key:name, value:workgroupA
-o	ii. For workgroupB: Provide key:name, value:workgroupB
-•	c. For “Requester Pays S3 buckets”, keep as default. This is Optional. Choose Enable queries on Requester Pays buckets in Amazon S3 if workgroup users will run queries on data stored in Amazon S3 buckets that are configured as Requester Pays. The account of the user running the query is charged for applicable data access and data transfer fees associated with the query.
+	a. Optionally, you can click on Override client-side settings. This will override the client-side settings and keep the defaults for query execution and storing results.
+	
+	b. Tag your workgroup to analyze later with CloudWatch or perform any analytics on query execution and results.
+		i. For workgroupA: provide key:name, value:workgroupA
+		ii. For workgroupB: Provide key:name, value:workgroupB
+	
+	c. For “Requester Pays S3 buckets”, keep as default. This is Optional. Choose Enable queries on Requester Pays buckets in Amazon S3 if workgroup users will run queries on data stored in Amazon S3 buckets that are configured as Requester Pays. The account of the user running the query is charged for applicable data access and data transfer fees associated with the query.
 
 5.	Click on “create workgroup”
 
@@ -82,7 +89,7 @@ Provide the S3 bucket location for workgroupA, copied and saved from the Output 
 
 ![screenshot](img/12.png)
 
-1. Logged in as “business_analyst_user”, click on “workgroup” and try switching to other workgroups which this user does not have access to. Select “workgroupB” and then click on “switch workgroup”.
+8. Logged in as “business_analyst_user”, click on “workgroup” and try switching to other workgroups which this user does not have access to. Select “workgroupB” and then click on “switch workgroup”.
 
 ![screenshot](img/13.png)
 
@@ -101,9 +108,12 @@ This means that we have achieved the user segregation for different workgroups a
 ![screenshot](img/16.png)
 
 12.	Now, login as workgroup_manager_user.
-•	a. Account ID or Alias:
-•	b. IAM User Name: (for e.g: in this lab: dmslab-student-WorkgroupManagerUser-KLF9GDANNTVZ)
-•	c. Password: master123
+	
+	a. Account ID or Alias:
+	
+	b. IAM User Name: (for e.g: in this lab: dmslab-student-WorkgroupManagerUser-KLF9GDANNTVZ)
+	
+	c. Password: master123
 This user has access to workgroupA and workgroupB for management purposes. Switch the workgroups to workgroupA, workgroupB and primary and you will not be able to access the primary workgroup because this user does not have access to “primary” workgroup.
 
 ![screenshot](img/17.png)
@@ -171,28 +181,35 @@ For per-workgroup data usage control, you can configure the maximum amount of da
 ![screenshot](img/28.png)
 
 3.	The select query on “sporting_event_info” returns more than 10KB of data. For this lab, we have only this table to query from. So, let’s set the threshold accordingly.
-•	a. Set “Data Limits” to 10 KBs
-•	b. Set “Time period” to 1 minute
-•	c. Set “Action” as “Send a notification to”. Here, click on “Create SNS Topic”.
-o	i. This will take you to SNS Console. Provide Topic Name as “workgroupA”.
+	
+	a. Set “Data Limits” to 10 KBs
+	
+	b. Set “Time period” to 1 minute
+	
+	c. Set “Action” as “Send a notification to”. Here, click on “Create SNS Topic”.
+		i. This will take you to SNS Console. Provide Topic Name as “workgroupA”.
 
 ![screenshot](img/29.png)
 
-o	ii. Click on “Next Step”
-o	iii. Click on “Create Subscription”. We will subscribe to this topic with email address. Whenever the threshold is breached, we will get an email notification to the email address which is our subscriber.
+		
+		ii. Click on “Next Step”
+		
+		iii. Click on “Create Subscription”. We will subscribe to this topic with email address. Whenever the threshold is breached, we will get an email notification to the email address which is our subscriber.
 
 ![screenshot](img/30.png)
 
-o	iv. In Create Subscription, select “Protocol” as Email. In “Endpoint”, Provide email address. Then click on “Create subscription”.
+		iv. In Create Subscription, select “Protocol” as Email. In “Endpoint”, Provide email address. Then click on “Create subscription”.
 
 ![screenshot](img/31.png)
 
-o	v. Verify your email for subscription to be validated.
-o	vi. Back to WorkgroupA workgroup data usage control, for “Action”, select “workgroupA” for the SNS topic. Click on “Create”.
+		v. Verify your email for subscription to be validated.
+		
+		vi. Back to WorkgroupA workgroup data usage control, for “Action”, select “workgroupA” for the SNS topic. Click on “Create”.
 
 ![screenshot](img/32.png)
 
-o	vii. Once created, this control will be listed like this:
+		vii. Once created, this control will be listed like this:
+
 ![screenshot](img/33.png)
 
 4.	Back to Athena Query Editor, run the following query, by logging in as Business Analyst User to the console and selecting “Workgroup: workgroupA”:
