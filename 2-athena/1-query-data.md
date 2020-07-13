@@ -2,27 +2,11 @@
 
 1. In the AWS services console, search for **Athena**.
 
-    ![screenshot](img/1.png)
+    ![screenshot](../2-athena/img/1.png)
 
-2. If you are using Athena first time, click on “Get Started” button in introduction screen.
+1. From the Query Editor tab, select your "ticketdata” database if not selected already.
 
-    ![screenshot](img/2.png)
-
-3. Athena stores query results in an Amazon S3 bucket and we should configure this before we can explore our dataset. There is already a bucket created for this purpose whose name follows the pattern: `quicksight-lab-data-lake-XXX-YYYY`.
-
-    ![screenshot](img/3.png)
-
-4. To perform such configuration, in Athena Console, click on Settings.
-
-    ![screenshot](img/4.png)
-
-5. Enter bucket name in the query result location field in the following format: `s3://<bucket-name>/` (slashes are important) and click on Save.
-
-    ![screenshot](img/5.png)
-
-6. From the Query Editor tab, select your "ticketdata” database if not selected already.
-
-7. Click the table named "parquet_sporting_event_ticket" to inspect the fields.
+2. Click the table named "parquet_sporting_event_ticket" to inspect the fields.
 
     > [!NOTE]
     > The type for fields id, sporting_event_id and ticketholder_id should be (double)
@@ -61,15 +45,18 @@
 
 1. As shown above Click **Create** and then select **Create view from query**.
 
-1. Name the view "sporting_event_info" and click **Create**.
+1. Name the view "td_sporting_event_info" and click **Create**.
+
+    > [!WARNING]
+    > Please note that name of the view must be "td_sporting_event_info" regardless of the name used in the screenshot below
 
     ![screenshot](img/8.png)
-    
+
     Your new view is created:
 
     ![screenshot](img/9.png)
 
-1. Copy the following SQL syntax into the New Query 2 tab and click on **Save Query**.
+2. Copy the following SQL syntax into the New Query 2 tab and click on **Save Query**.
 
     ```sql
     SELECT t.id AS ticket_id,
@@ -86,7 +73,7 @@
         t.seat,
         t.ticket_price,
         p.full_name AS ticketholder
-    FROM sporting_event_info e,
+    FROM td_sporting_event_info e,
         parquet_sporting_event_ticket t,
         parquet_person p
     WHERE 
@@ -108,13 +95,16 @@
 
     ![screenshot](img/13.png)
 
-1. As shown above click **Create view from query**.
+3. As shown above click **Create view from query**.
 
-1. Name the view "sporting_event_ticket_info" and click **Create**.
+4. Name the view "td_sporting_event_ticket_info" and click **Create**.
+
+    > [!WARNING]
+    > Please note that name of the view must be "td_sporting_event_ticket_info" regardless of the name used in the screenshot below
 
     ![screenshot](img/14.png)
 
-1. Copy the following SQL syntax into the New Query 3 tab.
+5. Copy the following SQL syntax into the New Query 3 tab.
 
     ```sql
     SELECT 
@@ -123,7 +113,7 @@
         count(distinct event_id) as events, 
         count(*) as tickets,
         avg(ticket_price) as avg_ticket_price
-    FROM sporting_event_ticket_info 
+    FROM td_sporting_event_ticket_info 
     GROUP BY 1
     ORDER BY 1;
     ```
