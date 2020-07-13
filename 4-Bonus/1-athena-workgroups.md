@@ -40,6 +40,7 @@ Now we will create workgroups.
 ![screenshot](img/4.png)
 
 4.	Provide the following:
+
 	a. Optionally, you can click on Override client-side settings. This will override the client-side settings and keep the defaults for query execution and storing results.
 	
 	b. Tag your workgroup to analyze later with CloudWatch or perform any analytics on query execution and results.
@@ -51,7 +52,9 @@ Now we will create workgroups.
 5.	Click on “create workgroup”
 
 6.	Follow the above procedure to create “workgroupB”.
-Explore the features of workgroups
+
+
+# Explore the features of workgroups
 
 1.	From the Outputs tab of DMS student lab, Note down user name “BusinessAnalystUser” and bucket name “S3BucketWorkgroupA” and save it.
 
@@ -114,6 +117,7 @@ This means that we have achieved the user segregation for different workgroups a
 	b. IAM User Name: (for e.g: in this lab: dmslab-student-WorkgroupManagerUser-KLF9GDANNTVZ)
 	
 	c. Password: master123
+
 This user has access to workgroupA and workgroupB for management purposes. Switch the workgroups to workgroupA, workgroupB and primary and you will not be able to access the primary workgroup because this user does not have access to “primary” workgroup.
 
 ![screenshot](img/17.png)
@@ -135,7 +139,7 @@ Click on “Edit Workgroup” to make changes, “Delete workgroup” to delete 
 
 Please Note: For lab purpose, we are attaching policies directly to users. For Best practices, we recommend creating separate groups in IAM for different workgroups and then attaching policies for different workgroups to their respective groups in IAM.
 
-Managing Query Usage and Cost
+# Managing Query Usage and Cost
 
 Please Note that the following section of this lab is carried out under admin account and not the BusinessAnalystUser and WorkgroupManagerUser, so please login to your account with admin credentials
 Once you enable the CloudWatch metrics for your workgroups, you will be able to see Metrics, by selecting the desired workgroup and click on “Metrics” as shown:
@@ -187,6 +191,7 @@ For per-workgroup data usage control, you can configure the maximum amount of da
 	b. Set “Time period” to 1 minute
 	
 	c. Set “Action” as “Send a notification to”. Here, click on “Create SNS Topic”.
+
 		i. This will take you to SNS Console. Provide Topic Name as “workgroupA”.
 
 ![screenshot](img/29.png)
@@ -226,7 +231,7 @@ SELECT * FROM "ticketdata"."sporting_event_info";
 
 7.	Alternatively, you can have AWS Lambda as the subscriber endpoint, so as soon as the threshold is breached, SNS will call the lambda function, which in turn will disable the workgroup and preventing from executing further queries within that workgroup. Feel free to explore multiple subscriber endpoints.
 
-Cost Allocation Tags
+# Cost Allocation Tags
 
 When you created two workgroups: workgroupA and workgroupB, you also created name as tags. These tags can be utilized in Billing and Cost Management console to determine the usage per workgroup. Learn more about tags.
 
