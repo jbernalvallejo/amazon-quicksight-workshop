@@ -3,8 +3,10 @@ Use workgroups to separate users, teams, applications, or workloads, to set limi
 Workflow setup to separate workloads
 
 For this lab, we will create two workgroups: “workgroupA” and “workgroupB”. Before creating the workgroups, you need to have users, appropriate IAM policies to assigned to each user and S3 buckets to store the query results. This has been created using Cloud Formation template for your convenience. It is recommended to go through the template for better understanding of pre-requisites. We will have two users: “business_analyst_user” and “workgroup_manager_user” created in IAM with different policies:
-•	The business_analyst_user will have access to workgroupA and query sporting_event_info table.
-•	The workgroup_manager_user will have access to both workgroups workgroupA and workgroupB for management purposes.
+
+	•	The business_analyst_user will have access to workgroupA and query sporting_event_info table.
+
+	•	The workgroup_manager_user will have access to both workgroups workgroupA and workgroupB for management purposes.
 
 The resources have been already created as part of the DMS Student lab. You can click on the CloudFormation stack and navigate to “Resources” to understand the different resources created with “DMSlab_student_CFN.json” template. Navigate to outputs section to see the results of resources created with description.
 
