@@ -8,7 +8,7 @@
 
     ![screenshot](../2-athena/img/2.png)
 
-3. Athena stores query results in an Amazon S3 bucket and we should configure this before we can explore our dataset. There is already a bucket created for this purpose whose name follows the pattern: `quicksight-lab-data-lake-XXX-YYYY`.
+3. Athena stores query results in an Amazon S3 bucket and we should configure this before we can explore our dataset. There is already a bucket created for this purpose whose name follows the pattern: `quicksight-lab-athena-results-<region>-<account-id>`.
 
     ![screenshot](../2-athena/img/3.png)
 
@@ -16,6 +16,6 @@
 
     ![screenshot](../2-athena/img/4.png)
 
-5. Enter bucket name in the query result location field in the following format: `s3://<bucket-name>/` (slashes are important) and click on Save.
+5. Enter bucket name in the query result location field in the following format: `s3://quicksight-lab-athena-results-<region>-<account-id>/` (slashes are important) and click on Save.
 
     ![screenshot](../2-athena/img/5.png)
