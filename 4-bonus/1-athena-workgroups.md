@@ -28,11 +28,15 @@ Now we will create workgroups.
 	a. Workgroup Name: “workgroupA”
 
 	b. Description: (optional):
+
 		i. “workgroupA for BusinessAnalystUser”
+
 		ii. “workgroupB for workgroup manager user”
 
 	c. Query result location: Provide the query location, You can find S3 bucket name from Cloudformation output tab of student lab
+
 		i. For workgroupA, the s3 path would look something like: “s3:// dmslab-student-s3bucketworkgroupa-ldtj44qkwyle/”.
+		
 		ii. For workgroupB, provide S3 path as: “s3://dmslab-student-s3bucketworkgroupb-n2jrw40pfqcc/”.
 
 	d. For “Encrypt query results”, leave as default i.e. unchecked. You can check this if you want your query results to be encrypted.
