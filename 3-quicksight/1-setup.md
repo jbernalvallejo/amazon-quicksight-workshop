@@ -16,7 +16,7 @@ If this is the first time you have used QuickSight, you are prompted to create a
 
 4.	Click Continue.
 
-5.	On the Create your QuickSight account page, select EU (Ireland) region – Quicksight is a regional service -, accept warning if prompted and fill out your name and email address.
+5.	On the Create your QuickSight account page, **select EU (Ireland) region** – Quicksight is a regional service -, accept warning if prompted and fill out your name and email address.
 
 ![screenshot](img/4.png)
 
@@ -26,9 +26,9 @@ If this is the first time you have used QuickSight, you are prompted to create a
 
 ![screenshot](img/5.png)
 
-![screenshot](img/6.png)
-
 8.	Click Finish. It will take some time for the new account to be created. Once it is done, go to the Amazon Quicksight dashboard.
+
+![screenshot](img/6.png)
 
 9.	We are going to configure now the data set for the Quicksight analysis/dashboard that we will be building based on one of the Athena views created in the previous section. In order to do that, click Manage Data on the top right corner.
 
