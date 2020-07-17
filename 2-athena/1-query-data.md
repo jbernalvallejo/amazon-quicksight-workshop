@@ -47,10 +47,7 @@
 
 1. Name the view "td_sporting_event_info" and click **Create**.
 
-    > [!WARNING]
-    > Please note that name of the view must be "td_sporting_event_info" regardless of the name used in the screenshot below
-
-    ![screenshot](img/8.png)
+    ![screenshot](img/td_sporting_event_info.png)
 
     Your new view is created:
 
@@ -99,10 +96,7 @@
 
 4. Name the view "td_sporting_event_ticket_info" and click **Create**.
 
-    > [!WARNING]
-    > Please note that name of the view must be "td_sporting_event_ticket_info" regardless of the name used in the screenshot below
-
-    ![screenshot](img/14.png)
+    ![screenshot](img/td_sporting_event_ticket_info.png)
 
 5. Copy the following SQL syntax into the New Query 3 tab.
 
