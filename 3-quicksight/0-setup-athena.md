@@ -16,7 +16,6 @@
 
     ![screenshot](../2-athena/img/gotoathena.png)
 
-
 5. If you are using Athena for the first time, click on “Get Started” button. Otherwise, go to the next step.
 
     ![screenshot](../2-athena/img/2.png)

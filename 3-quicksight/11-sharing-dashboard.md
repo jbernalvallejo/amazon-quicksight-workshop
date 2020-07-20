@@ -11,7 +11,7 @@ On the top right click on the user and Manage QuickSight:
 ![screenshot](img/50.png)
 
 Navigate now to Manage users option menu and then choose to Invite users:
- 
+
 ![screenshot](img/51.png)
 
 Type the username of the user you would like to invite (that will be the login id) and click the plus icon on the right: 
@@ -19,29 +19,29 @@ Type the username of the user you would like to invite (that will be the login i
 ![screenshot](img/52.png)
 
 Once added to the table below, enter email address of the user. For testing purposes, use your own email and then use on the Invite button:
- 
+
 ![screenshot](img/53.png)
 
 That address will receive an email with an invitation to join your quicksight account and you will be able to share the dashboard with them once they sign up.
 
 Get back to our sporting_event_ticket_info analysis. Using the Share option you can publish a dashboard. 
- 
+
 ![screenshot](img/54.png)
 
 Enter its name and click on Publish dashboard.
- 
+
 ![screenshot](img/55.png)
 
 Once clicked, you need to enter which users you would like to share it with. Type here the name of the user you created before and share the dashboard: 
 
-![screenshot](img/56.png) 
+![screenshot](img/56.png)
 
 ![screenshot](img/57.png)
 
 If the user has activated his/her account, it should receive and email with a link to the dashboard.
 
 You will be redirected to the dashboard you just shared. You also have the option to email it to audience users regularly according to different customizable settings:
- 
+
 ![screenshot](img/58.png)
 
 ![screenshot](img/59.png)
