@@ -369,6 +369,53 @@ Resources:
               - Ref: AWS::Region
               - Ref: AWS::AccountId
               - workgroup/workgroupA
+        - Effect: Allow
+          Action:
+          - glue:Get*
+          - glue:GetTable
+          Resource:
+          - Fn::Join:
+            - ":"
+            - - arn:aws:glue
+              - Ref: AWS::Region
+              - Ref: AWS::AccountId
+              - catalog
+          - Fn::Join:
+            - ":"
+            - - arn:aws:glue
+              - Ref: AWS::Region
+              - Ref: AWS::AccountId
+              - catalog/awsdatacatalog
+          - Fn::Join:
+            - ":"
+            - - arn:aws:glue
+              - Ref: AWS::Region
+              - Ref: AWS::AccountId
+              - database/ticketdata
+          - Fn::Join:
+            - ":"
+            - - arn:aws:glue
+              - Ref: AWS::Region
+              - Ref: AWS::AccountId
+              - table/ticketdata/parquet_sporting_event
+          - Fn::Join:
+            - ":"
+            - - arn:aws:glue
+              - Ref: AWS::Region
+              - Ref: AWS::AccountId
+              - table/ticketdata/parquet_sport_team
+          - Fn::Join:
+            - ":"
+            - - arn:aws:glue
+              - Ref: AWS::Region
+              - Ref: AWS::AccountId
+              - table/ticketdata/parquet_sport_location
+          - Fn::Join:
+            - ":"
+            - - arn:aws:glue
+              - Ref: AWS::Region
+              - Ref: AWS::AccountId
+              - table/ticketdata/sporting_event_info
       Users:
         - !Ref BusinessAnalystUser
 
