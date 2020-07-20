@@ -275,10 +275,22 @@ Resources:
         - ServerSideEncryptionByDefault:
             SSEAlgorithm: AES256
 
-  BusinessAnalystUserPolicy:
-    Type: AWS::IAM::ManagedPolicy  
+  BusinessAnalystUser:
+    Type: AWS::IAM::User   
     Properties:
-      Description: Policy for providing required access to the business analyst user
+      LoginProfile:
+        Password: master123
+
+  WorkgroupManagerUser:
+    Type: AWS::IAM::User   
+    Properties:
+      LoginProfile:
+        Password: master123  
+
+  BusinessAnalystUserPolicy:
+    Type: AWS::IAM::Policy  
+    Properties:
+      PolicyName: BusinessAnalystUserPolicy
       PolicyDocument:
         Version: 2012-10-17
         Statement:
@@ -357,11 +369,13 @@ Resources:
               - Ref: AWS::Region
               - Ref: AWS::AccountId
               - workgroup/workgroupA
+      Users:
+        - !Ref BusinessAnalystUser
 
   WorkgroupManagerUserPolicy:
-    Type: AWS::IAM::ManagedPolicy
+    Type: AWS::IAM::Policy
     Properties:
-      Description: Policy for providing only manager access to workgroup manager user for WorkgroupA and WorkgroupB
+      PolicyName: WorkgroupManagerUserPolicy
       PolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -450,23 +464,9 @@ Resources:
             - - arn:aws:athena
               - Ref: AWS::Region
               - Ref: AWS::AccountId
-              - workgroup/workgroupB
-
-  BusinessAnalystUser:
-    Type: AWS::IAM::User   
-    Properties:
-      ManagedPolicyArns: 
-        - !Ref BusinessAnalystUserPolicy
-      LoginProfile:
-        Password: master123
-
-  WorkgroupManagerUser:
-    Type: AWS::IAM::User   
-    Properties:
-      ManagedPolicyArns:
-        - !Ref WorkgroupManagerUserPolicy
-      LoginProfile:
-        Password: master123    
+              - workgroup/workgroupB  
+      Users:
+        - !Ref WorkgroupManagerUser
 
 Outputs:
   AthenaResultsBucket:
