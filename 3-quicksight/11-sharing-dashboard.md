@@ -1,8 +1,8 @@
 # Creating and sharing a dashboard
 
-A dashboard is a read-only snapshot of an analysis that you can share with other Amazon QuickSight users for reporting purposes. In a dashboard, other users can still play with visuals and data but that will not modify dataset.
+A dashboard is a read-only snapshot of an analysis that you can share with other Amazon QuickSight users for reporting purposes. In a dashboard, other users can still play with visuals and data but the underlying dataset is not modified.
 
-You can share an analysis with one or more other users with whom you want to collaborate on creating visuals. Analysis provide other uses to write and modify data set.
+You can share an analysis with one or more users with whom you want to collaborate on creating visuals. Analysis allows other users the ability to write and modify the data set.
 
 Let’s create a user and share our new dashboard.
 
@@ -22,7 +22,7 @@ Once added to the table below, enter email address of the user. For testing purp
  
 ![screenshot](img/53.png)
 
-That email address will receive an email with an invitation to join your quicksight account and you will be able to share the dashboard with them once they sign up.
+That address will receive an email with an invitation to join your quicksight account and you will be able to share the dashboard with them once they sign up.
 
 Get back to our sporting_event_ticket_info analysis. Using the Share option you can publish a dashboard. 
  
@@ -48,5 +48,4 @@ You will be redirected to the dashboard you just shared. You also have the optio
 
 ![screenshot](img/60.png)
 
-
-Congratulations! You have successfully completed this lab.
+**Congratulations!** You have successfully completed this lab.

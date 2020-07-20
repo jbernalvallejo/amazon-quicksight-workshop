@@ -1,134 +1,122 @@
 # Athena Workgroups to Control Query Access and Costs (Optional)
+
 Use workgroups to separate users, teams, applications, or workloads, to set limits on amount of data each query or the entire workgroup can process, and to track costs. Because workgroups act as resources, you can use resource-level identity-based policies to control access to a specific workgroup. You can also view query-related metrics in Amazon CloudWatch, control costs by configuring limits on the amount of data scanned, create thresholds, and trigger actions, such as Amazon SNS, when these thresholds are breached.
 Workflow setup to separate workloads
 
 For this lab, we will create two workgroups: “workgroupA” and “workgroupB”. Before creating the workgroups, you need to have users, appropriate IAM policies to assigned to each user and S3 buckets to store the query results. This has been created using Cloud Formation template for your convenience. It is recommended to go through the template for better understanding of pre-requisites. We will have two users: “business_analyst_user” and “workgroup_manager_user” created in IAM with different policies:
 
-	•	The business_analyst_user will have access to workgroupA and query sporting_event_info table.
+- The business_analyst_user will have access to workgroupA and query sporting_event_info table.
+- The workgroup_manager_user will have access to both workgroups workgroupA and workgroupB for management purposes.
 
-	•	The workgroup_manager_user will have access to both workgroups workgroupA and workgroupB for management purposes.
-
-The resources have been already created as part of the DMS Student lab. You can click on the CloudFormation stack and navigate to “Resources” to understand the different resources created with “DMSlab_student_CFN.json” template. Navigate to outputs section to see the results of resources created with description.
+The resources have been already created and they are available in the AWS account you are currently using. You can click on the CloudFormation stack and navigate to “Resources” to understand the different resources created with “DMSlab_student_CFN.json” template. Navigate to outputs section to see the results of resources created with description.
 
 ![screenshot](img/1.png)
 
 We will utilize the values from the outputs wherever required in the following steps.
 Now we will create workgroups.
 
-1.	Navigate to Athena Console and click on “Workgroup: primary”. The default workgroup provided for querying in Athena is “primary”.
+1. Navigate to Athena Console and click on “Workgroup: primary”. The default workgroup provided for querying in Athena is “primary”.
 
-![screenshot](img/2.png)
+	![screenshot](img/2.png)
 
-2.	Click on “Create workgroup”
+2. Click on “Create workgroup”
 
-![screenshot](img/3.png)
+	![screenshot](img/3.png)
 
-3.	Provide the following:
+3. Provide the following:
 
-	a. Workgroup Name: “workgroupA”
+	- Workgroup Name: “workgroupA”
+	- Description: (optional):
+		- “workgroupA for BusinessAnalystUser”
+		- “workgroupB for workgroup manager user”
 
-	b. Description: (optional):
+	- Query result location: Provide the query location, You can find S3 bucket name from Cloudformation output tab of student lab
 
-		i. “workgroupA for BusinessAnalystUser”
+		- For workgroupA, the s3 path would look something like: “s3:// dmslab-student-s3bucketworkgroupa-ldtj44qkwyle/”.
+		- For workgroupB, provide S3 path as: “s3://dmslab-student-s3bucketworkgroupb-n2jrw40pfqcc/”.
 
-		ii. “workgroupB for workgroup manager user”
+	- For “Encrypt query results”, leave as default i.e. unchecked. You can check this if you want your query results to be encrypted.
+ 	- Check the checkbox for “Metrics: Publish query metrics to AWS CloudWatch”
 
-	c. Query result location: Provide the query location, You can find S3 bucket name from Cloudformation output tab of student lab
+	![screenshot](img/4.png)
 
-		i. For workgroupA, the s3 path would look something like: “s3:// dmslab-student-s3bucketworkgroupa-ldtj44qkwyle/”.
-		
-		ii. For workgroupB, provide S3 path as: “s3://dmslab-student-s3bucketworkgroupb-n2jrw40pfqcc/”.
+4. Provide the following:
 
-	d. For “Encrypt query results”, leave as default i.e. unchecked. You can check this if you want your query results to be encrypted.
-
- 	e. Check the checkbox for “Metrics: Publish query metrics to AWS CloudWatch”
-
-![screenshot](img/4.png)
-
-4.	Provide the following:
-
-	a. Optionally, you can click on Override client-side settings. This will override the client-side settings and keep the defaults for query execution and storing results.
-	
-	b. Tag your workgroup to analyze later with CloudWatch or perform any analytics on query execution and results.
-
-		i. For workgroupA: provide key:name, value:workgroupA
-	
-		ii. For workgroupB: Provide key:name, value:workgroupB
-	
-	c. For “Requester Pays S3 buckets”, keep as default. This is Optional. Choose Enable queries on Requester Pays buckets in Amazon S3 if workgroup users will run queries on data stored in Amazon S3 buckets that are configured as Requester Pays. The account of the user running the query is charged for applicable data access and data transfer fees associated with the query.
+	- Optionally, you can click on Override client-side settings. This will override the client-side settings and keep the defaults for query execution and storing results.
+	- Tag your workgroup to analyze later with CloudWatch or perform any analytics on query execution and results.
+		- For workgroupA: provide key:name, value:workgroupA	
+		- For workgroupB: Provide key:name, value:workgroupB
+	- For “Requester Pays S3 buckets”, keep as default. This is Optional. Choose Enable queries on Requester Pays buckets in Amazon S3 if workgroup users will run queries on data stored in Amazon S3 buckets that are configured as Requester Pays. The account of the user running the query is charged for applicable data access and data transfer fees associated with the query.
 
 5.	Click on “create workgroup”
 
 6.	Follow the above procedure to create “workgroupB”.
 
-
 # Explore the features of workgroups
 
 1.	From the Outputs tab of DMS student lab, Note down user name “BusinessAnalystUser” and bucket name “S3BucketWorkgroupA” and save it.
 
-![screenshot](img/5.png)
+	![screenshot](img/5.png)
 
 2.	Note down 12 digit AWS account id . Follow steps here to find out account id - https://www.apn-portal.com/knowledgebase/articles/FAQ/Where-Can-I-Find-My-AWS-Account-ID
 
 3.	Next, Open AWS console log-in different browser, select IAM user and login with following credential: 
 	
-	a. AccountID: 
-	b. IAM User name: 
-	c. Password: master123
+	- AccountID: 
+	- IAM User name: 
+	- Password: master123
 
 4.	From new BusinessAnalystUser user, Navigate to Athena Console. You will notice that you can see your workgroup designated as “workgroupA” and you can also view table: sporting_event_info as shown below:
 
-![screenshot](img/6.png)
+	![screenshot](img/6.png)
 
 If your workgroup is other than workgroupA, click on Workgroup:
 
-![screenshot](img/7.png)
+	![screenshot](img/7.png)
 
 Select “workgroupA” from the workgroup list and then click on “Switch Workgroup”.
 
-![screenshot](img/8.png)
+	![screenshot](img/8.png)
 
 5.	If you see that your bucket is not setup with Athena to store the query results, as shown below: then proceed to setup the bucket.
 
-![screenshot](img/9.png)
+	![screenshot](img/9.png)
 
 6.	Setup the S3 bucket for storing the query results. Click on “Settings”.
 
-![screenshot](img/10.png)
+	![screenshot](img/10.png)
 
 Provide the S3 bucket location for workgroupA, copied and saved from the Output tab of cloud formation template, as shown below. Then, click on Save.
 
-![screenshot](img/11.png)
+	![screenshot](img/11.png)
 
 7.	Back to Athena Query Editor, click on the three dots against “sporting_event_info” view and then click on “Preview”. You will be able to see query results. This shows that you as “business_analyst_user” has access to query the view “sporting_event_info” and store the query results in S3 bucket designated for workgroupA.
 
-![screenshot](img/12.png)
+	![screenshot](img/12.png)
 
 8. Logged in as “business_analyst_user”, click on “workgroup” and try switching to other workgroups which this user does not have access to. Select “workgroupB” and then click on “switch workgroup”.
 
-![screenshot](img/13.png)
+	![screenshot](img/13.png)
 
 9. If you try running the query, you will get the error “Access Denied” as shown below:
 
-![screenshot](img/14.png)
+	![screenshot](img/14.png)
 
 This means that we have achieved the user segregation for different workgroups as defined by the IAM policy and attached to that user. Any query executed and its results within a particular workgroup will be isolated to that workgroup.
 
 10.	To view the query results, navigate to “workgroup”, select the workgroup and click on “View Details”.
 
-![screenshot](img/15.png)
+	![screenshot](img/15.png)
 
 11.	You will be able to see the details, as shown below. Navigate to S3 bucket by clicking on the link and see the query results stored inside the “Unsaved” folder within the workgroupA bucket.
 
-![screenshot](img/16.png)
+	![screenshot](img/16.png)
 
 12.	Now, login as workgroup_manager_user.
 	
-	a. Account ID or Alias:
-	
-	b. IAM User Name: (for e.g: in this lab: dmslab-student-WorkgroupManagerUser-KLF9GDANNTVZ)
-	
-	c. Password: master123
+	- Account ID or Alias:	
+	- IAM User Name: (for e.g: in this lab: dmslab-student-WorkgroupManagerUser-KLF9GDANNTVZ)	
+	- Password: master123
 
 This user has access to workgroupA and workgroupB for management purposes. Switch the workgroups to workgroupA, workgroupB and primary and you will not be able to access the primary workgroup because this user does not have access to “primary” workgroup.
 
@@ -180,7 +168,9 @@ Per-query data usage control will check the total amount of data scanned by per 
 
 5.	Navigate to query editor on Athena console. Run the following query:
 
+```sql
 SELECT * FROM "ticketdata"."cdc_sporting_event_ticket"
+```
 
 6.	This query scans 200 MB of data, but since we have set the threshold as 10MB, this query execution will be cancelled, as shown:
 

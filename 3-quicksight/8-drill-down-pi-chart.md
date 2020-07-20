@@ -1,6 +1,6 @@
 # Drill down on a Pie Chart
 
-Let’s add a new visual and select Pie Chart Icon. Add sport to group/color and also drop home_team right below sport selection until it says “Add drill-down Layer”. Drop it should look like the one below:
+Let’s add a new visual and select Pie Chart Icon. Add sport to Group/Color and also drop home_team right below sport selection until it says “Add drill-down Layer”. It should look like the one below:
  
 ![screenshot](img/40.png)
 
