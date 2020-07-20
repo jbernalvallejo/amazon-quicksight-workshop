@@ -10,4 +10,4 @@ The pipeline deployed looks as follows:
 2. We have run a Glue Crawler that discovered the data in S3 and found out the structure. 
 3. Once the data was analyzed by AWS Glue, tables were created in the Glue data catalog, ready to be queried.
 4. Athena will be used to join different tables and create a view to present the data to Quicksight. You will start the lab by specifying in Amazon Athena where to store the temporary data when submitting the querys. 
-5. Then you will move on to the Quicksight console, where you will create an account and get the data from Athena to start creating the Dashbords.
+5. Then you will move on to the Quicksight console, where you will create an account and get the data from Athena to start creating the Dashboards.
