@@ -258,9 +258,227 @@ Resources:
         ViewOriginalText: "/* Presto View: eyJvcmlnaW5hbFNxbCI6IlNFTEVDVFxuICBcInRcIi5cImlkXCIgXCJ0aWNrZXRfaWRcIlxuLCBcImVcIi5cImV2ZW50X2lkXCJcbiwgXCJlXCIuXCJzcG9ydFwiXG4sIFwiZVwiLlwiZXZlbnRfZGF0ZV90aW1lXCJcbiwgXCJlXCIuXCJob21lX3RlYW1cIlxuLCBcImVcIi5cImF3YXlfdGVhbVwiXG4sIFwiZVwiLlwibG9jYXRpb25cIlxuLCBcImVcIi5cImNpdHlcIlxuLCBcInRcIi5cInNlYXRfbGV2ZWxcIlxuLCBcInRcIi5cInNlYXRfc2VjdGlvblwiXG4sIFwidFwiLlwic2VhdF9yb3dcIlxuLCBcInRcIi5cInNlYXRcIlxuLCBcInRcIi5cInRpY2tldF9wcmljZVwiXG4sIFwicFwiLlwiZnVsbF9uYW1lXCIgXCJ0aWNrZXRob2xkZXJcIlxuRlJPTVxuICBzcG9ydGluZ19ldmVudF9pbmZvIGVcbiwgcGFycXVldF9zcG9ydGluZ19ldmVudF90aWNrZXQgdFxuLCBwYXJxdWV0X3BlcnNvbiBwXG5XSEVSRSAoKFwidFwiLlwic3BvcnRpbmdfZXZlbnRfaWRcIiA9IFwiZVwiLlwiZXZlbnRfaWRcIikgQU5EIChcInRcIi5cInRpY2tldGhvbGRlcl9pZFwiID0gXCJwXCIuXCJpZFwiKSlcbiIsImNhdGFsb2ciOiJhd3NkYXRhY2F0YWxvZyIsInNjaGVtYSI6InRpY2tldGRhdGEiLCJjb2x1bW5zIjpbeyJuYW1lIjoidGlja2V0X2lkIiwidHlwZSI6ImRvdWJsZSJ9LHsibmFtZSI6ImV2ZW50X2lkIiwidHlwZSI6ImJpZ2ludCJ9LHsibmFtZSI6InNwb3J0IiwidHlwZSI6InZhcmNoYXIifSx7Im5hbWUiOiJldmVudF9kYXRlX3RpbWUiLCJ0eXBlIjoidGltZXN0YW1wIn0seyJuYW1lIjoiaG9tZV90ZWFtIiwidHlwZSI6InZhcmNoYXIifSx7Im5hbWUiOiJhd2F5X3RlYW0iLCJ0eXBlIjoidmFyY2hhciJ9LHsibmFtZSI6ImxvY2F0aW9uIiwidHlwZSI6InZhcmNoYXIifSx7Im5hbWUiOiJjaXR5IiwidHlwZSI6InZhcmNoYXIifSx7Im5hbWUiOiJzZWF0X2xldmVsIiwidHlwZSI6ImJpZ2ludCJ9LHsibmFtZSI6InNlYXRfc2VjdGlvbiIsInR5cGUiOiJiaWdpbnQifSx7Im5hbWUiOiJzZWF0X3JvdyIsInR5cGUiOiJ2YXJjaGFyIn0seyJuYW1lIjoic2VhdCIsInR5cGUiOiJiaWdpbnQifSx7Im5hbWUiOiJ0aWNrZXRfcHJpY2UiLCJ0eXBlIjoiZG91YmxlIn0seyJuYW1lIjoidGlja2V0aG9sZGVyIiwidHlwZSI6InZhcmNoYXIifV19 */"
     DependsOn: SportingEventInfoView
 
+  # Athena workgroups section
+  S3BucketWorkgroupA:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketEncryption: 
+        ServerSideEncryptionConfiguration: 
+        - ServerSideEncryptionByDefault:
+            SSEAlgorithm: AES256
+
+  S3BucketWorkgroupB:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketEncryption: 
+        ServerSideEncryptionConfiguration: 
+        - ServerSideEncryptionByDefault:
+            SSEAlgorithm: AES256
+
+  BusinessAnalystUserPolicy:
+    Type: AWS::IAM::ManagedPolicy  
+    Properties:
+      Description: Policy for providing required access to the business analyst user
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+        - Effect: Allow
+          Action: 'athena:ListWorkGroups'
+          Resource: '*'
+        - Effect: Allow
+          Action:
+          - s3:ListBucketMultipartUploads
+          - athena:StartQueryExecution
+          - athena:GetQueryResultsStream
+          - athena:GetQueryResults
+          - s3:CreateBucket
+          - s3:ListBucket
+          - athena:DeleteNamedQuery
+          - athena:GetNamedQuery
+          - athena:ListTagsForResource
+          - athena:ListQueryExecutions
+          - s3:ListMultipartUploadParts
+          - athena:ListNamedQueries
+          - s3:PutObject
+          - s3:GetObject
+          - s3:GetObjectAcl
+          - athena:GetWorkGroup
+          - athena:CreateNamedQuery
+          - s3:AbortMultipartUpload
+          - athena:StopQueryExecution
+          - athena:GetQueryExecution
+          - athena:BatchGetNamedQuery
+          - s3:GetBucketLocation
+          - athena:BatchGetQueryExecution
+          Resource:
+          - Fn::Join:
+            - ''
+            - - Fn::Join:
+                - ''
+                - - 'arn:aws:s3:::'
+                  - Ref: S3BucketWorkgroupA
+              - "/*"
+          - Fn::Join:
+            - ''
+            - - 'arn:aws:s3:::'
+              - Ref: S3BucketWorkgroupA
+          - Fn::Join:
+            - ''
+            - - 'arn:aws:s3:::'
+              - Ref: QuicksightLabBucket
+          - Fn::Join:
+            - ''
+            - - Fn::Join:
+                - ''
+                - - 'arn:aws:s3:::'
+                  - Ref: QuicksightLabBucket
+              - "/*"
+          - Fn::Join:
+            - ":"
+            - - arn:aws:athena
+              - Ref: AWS::Region
+              - Ref: AWS::AccountId
+              - workgroup/workgroupA
+        - Effect: Allow
+          Action: athena:GetQueryExecutions
+          Resource:
+            Fn::Join:
+            - ":"
+            - - arn:aws:athena
+              - Ref: AWS::Region
+              - Ref: AWS::AccountId
+              - workgroup/workgroupA                
+        - Effect: Allow
+          Action: athena:GetQueryExecutions
+          Resource:
+            Fn::Join:
+            - ":"
+            - - arn:aws:athena
+              - Ref: AWS::Region
+              - Ref: AWS::AccountId
+              - workgroup/workgroupA
+
+  WorkgroupManagerUserPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      Description: Policy for providing only manager access to workgroup manager user for WorkgroupA and WorkgroupB
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - athena:ListWorkGroups
+          Resource: "*"
+        - Effect: Allow
+          Action:
+          - s3:ListBucketMultipartUploads
+          - s3:CreateBucket
+          - s3:ListBucket
+          - s3:ListMultipartUploadParts
+          - s3:PutObject
+          - s3:GetObject
+          - s3:GetObjectAcl
+          - s3:GetBucketLocation
+          Resource:
+          - Fn::Join:
+            - ''
+            - - 'arn:aws:s3:::'
+              - Ref: S3BucketWorkgroupA
+          - Fn::Join:
+            - ''
+            - - Fn::Join:
+                - ''
+                - - 'arn:aws:s3:::'
+                  - Ref: S3BucketWorkgroupA
+              - "/*"
+          - Fn::Join:
+            - ''
+            - - 'arn:aws:s3:::'
+              - Ref: S3BucketWorkgroupB
+          - Fn::Join:
+            - ''
+            - - Fn::Join:
+                - ''
+                - - 'arn:aws:s3:::'
+                  - Ref: S3BucketWorkgroupB
+              - "/*"
+          - Fn::Join:
+            - ''
+            - - 'arn:aws:s3:::'
+              - Ref: QuicksightLabBucket
+          - Fn::Join:
+            - ''
+            - - Fn::Join:
+                - ''
+                - - 'arn:aws:s3:::'
+                  - Ref: QuicksightLabBucket
+              - "/*"
+          - Fn::Join:
+            - ":"
+            - - arn:aws:athena
+              - Ref: AWS::Region
+              - Ref: AWS::AccountId
+              - workgroup/workgroupA
+          - Fn::Join:
+            - ":"
+            - - arn:aws:athena
+              - Ref: AWS::Region
+              - Ref: AWS::AccountId
+              - workgroup/workgroupB
+        - Effect: Allow
+          Action:
+          - athena:DeleteWorkGroup
+          - athena:UpdateWorkGroup
+          - athena:GetWorkGroup
+          - athena:CreateWorkGroup
+          - athena:GetExecutionEngine
+          - athena:GetExecutionEngines
+          - athena:GetNamespace
+          - athena:GetCatalogs
+          - athena:GetNamespaces
+          - athena:GetTables
+          - athena:GetTable
+          Resource:
+          - Fn::Join:
+            - ":"
+            - - arn:aws:athena
+              - Ref: AWS::Region
+              - Ref: AWS::AccountId
+              - workgroup/workgroupA
+          - Fn::Join:
+            - ":"
+            - - arn:aws:athena
+              - Ref: AWS::Region
+              - Ref: AWS::AccountId
+              - workgroup/workgroupB
+
+  BusinessAnalystUser:
+    Type: AWS::IAM::User   
+    Properties:
+      ManagedPolicyArns: 
+        - !Ref BusinessAnalystUserPolicy
+      LoginProfile:
+        Password: master123
+
+  WorkgroupManagerUser:
+    Type: AWS::IAM::User   
+    Properties:
+      ManagedPolicyArns:
+        - !Ref WorkgroupManagerUserPolicy
+      LoginProfile:
+        Password: master123    
+
 Outputs:
   AthenaResultsBucket:
     Description: S3 bucket to configure in Athena Settings to store query results
     Value: !Sub
       - s3://${BucketName}/
       - { BucketName: !Ref AthenaResultsBucket }
+
+  S3BucketWorkgroupA:
+    Description: S3 bucket to Workgroup A
+    Value: !Ref S3BucketWorkgroupA
+
+  S3BucketWorkgroupB:
+    Description: S3 bucket to Workgroup B
+    Value: !Ref S3BucketWorkgroupB
