@@ -4,7 +4,7 @@
 
     ![screenshot](../2-athena/img/openS3.png)
 
-2. Select the bucket `quicksight-lab-athena-results-<region>-<account-id>`.
+2. Click on the bucket `quicksight-lab-athena-results-<region>-<account-id>`.
 
     ![screenshot](../2-athena/img/selectbucket.png)
 
@@ -17,7 +17,7 @@
     ![screenshot](../2-athena/img/gotoathena.png)
 
 
-5. If you are using Athena for the first time, click on “Get Started” button in the introduction screen.
+5. If you are using Athena for the first time, click on “Get Started” button. Otherwise, go to the next step.
 
     ![screenshot](../2-athena/img/2.png)
 
@@ -25,10 +25,10 @@
 
     ![screenshot](../2-athena/img/3.png)
 
-7. To perform such configuration, in Athena Console, click on Settings.
+7. To perform such configuration, in Athena Console, click on Settings located on the top right corner of the page.
 
     ![screenshot](../2-athena/img/4.png)
 
-8. Enter bucket name in the query result location field in the following format: `s3://quicksight-lab-athena-results-<region>-<account-id>/` use the name you copied from the bucket in S3 (slashes are important) and click on Save.
+8. Enter bucket name in the "Query result location" field in the following format: `s3://quicksight-lab-athena-results-<region>-<account-id>/` Use the name you copied from the bucket in S3 *(slashes are important)* and click on Save.
 
     ![screenshot](../2-athena/img/5.png)
