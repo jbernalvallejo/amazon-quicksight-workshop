@@ -50,7 +50,9 @@ Now we will create workgroups.
 	a. Optionally, you can click on Override client-side settings. This will override the client-side settings and keep the defaults for query execution and storing results.
 	
 	b. Tag your workgroup to analyze later with CloudWatch or perform any analytics on query execution and results.
+
 		i. For workgroupA: provide key:name, value:workgroupA
+	
 		ii. For workgroupB: Provide key:name, value:workgroupB
 	
 	c. For “Requester Pays S3 buckets”, keep as default. This is Optional. Choose Enable queries on Requester Pays buckets in Amazon S3 if workgroup users will run queries on data stored in Amazon S3 buckets that are configured as Requester Pays. The account of the user running the query is charged for applicable data access and data transfer fees associated with the query.
@@ -68,9 +70,13 @@ Now we will create workgroups.
 
 2.	Note down 12 digit AWS account id . Follow steps here to find out account id - https://www.apn-portal.com/knowledgebase/articles/FAQ/Where-Can-I-Find-My-AWS-Account-ID
 
-3.	Next, Open AWS console log-in different browser, select IAM user and login with following credential: a. AccountID: b. IAM User name: c. Password: master123
+3.	Next, Open AWS console log-in different browser, select IAM user and login with following credential: 
+	
+	a. AccountID: 
+	b. IAM User name: 
+	c. Password: master123
 
-4.	From new BusinessAnalystUser user, Navigate to Athena Console . You will notice that you can see your workgroup designated as “workgroupA” and you can also view table: sporting_event_info as shown below:
+4.	From new BusinessAnalystUser user, Navigate to Athena Console. You will notice that you can see your workgroup designated as “workgroupA” and you can also view table: sporting_event_info as shown below:
 
 ![screenshot](img/6.png)
 
