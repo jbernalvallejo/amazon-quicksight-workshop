@@ -209,6 +209,9 @@ For per-workgroup data usage control, you can configure the maximum amount of da
 
         ![screenshot](img/33.png)
 
+        > [!NOTE]
+        > if the SNS topic doesn´t show you will need to copy the arn of the topic created in the previous steps and add it here
+
 4. Back to Athena Query Editor, run the following query, by logging in as Business Analyst User to the console and selecting “Workgroup: workgroupA”:
 
     ```sql
@@ -225,23 +228,3 @@ For per-workgroup data usage control, you can configure the maximum amount of da
 
 7. Alternatively, you can have AWS Lambda as the subscriber endpoint, so as soon as the threshold is breached, SNS will call the lambda function, which in turn will disable the workgroup and preventing from executing further queries within that workgroup. Feel free to explore multiple subscriber endpoints.
 
-## Cost Allocation Tags
-
-When you created two workgroups: workgroupA and workgroupB, you also created name as tags. These tags can be utilized in Billing and Cost Management console to determine the usage per workgroup. 
-
-For example, you can create a set of tags for workgroups in your account that helps you track workgroup owners, or identify workgroups by their purpose. You can view tags for a workgroup in “View Details” page for the workgroup under consideration.
-You can add tags later after you have created workgroup. To create tags:
-
-1. Open the Athena console at https://console.aws.amazon.com/athena/, choose the Workgroups tab, and select the workgroup.
-
-2. Choose View details or Edit workgroup.
-
-3. Choose the Tags tab.
-
-4. On the Tags tab, choose Manage tags, and then specify the key and value for each tag.
-
-5. When you are done, choose Save.
-
-    ![screenshot](img/36.png)
-
-For more details on best practices: https://docs.aws.amazon.com/athena/latest/ug/tags-console
