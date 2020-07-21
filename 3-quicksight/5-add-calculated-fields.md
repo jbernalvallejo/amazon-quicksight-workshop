@@ -8,7 +8,7 @@ In the next section, you will learn how to add calculated fields for "day of wee
 
 2. For Calculated field name type “event_day_of_week".
 
-3. For Formula, type `extract(“WD”,{event_date_time})`.
+3. For Formula, type `extract("WD",{event_date_time})`.
 
     > [!NOTE]
     > extract returns a specified portion of a date value. Requesting a time-related portion of a date that doesn't contain time information returns 0. WD: This returns the day of the week as an integer, with Sunday as 1.
