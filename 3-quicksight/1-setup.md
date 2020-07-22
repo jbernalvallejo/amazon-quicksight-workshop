@@ -61,7 +61,7 @@ If this is the first time you have used QuickSight, you are prompted to create a
     ![screenshot](img/12.png)
 
     > [!NOTE]
-    > SPICE is an in-memory-calculation engine that enables achieving fast performance at scale. Data is automatically replicated for high availability allowing thousands of users to simultaneously perform fast, interactive analysis while shielding your underlying data infrastructure, saving you time and resources. This lab account has been created with a default SPICE size of 1GB. If needed, it could be increased Quicksight account settings.
+    > SPICE is an in-memory-calculation engine that enables achieving fast performance at scale. Data is automatically replicated for high availability allowing thousands of users to simultaneously perform fast, interactive analysis while shielding your underlying data infrastructure, saving you time and resources. This lab account has been created with a default SPICE size of 1GB. If needed, it could be increased through Quicksight account settings.
 
 You will now be taken to the QuickSight Visualize interface where you can start building your dashboard.  
 
