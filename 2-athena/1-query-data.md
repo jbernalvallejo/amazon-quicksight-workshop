@@ -9,7 +9,7 @@
 2. Click the table named "parquet_sporting_event_ticket" to inspect the fields.
 
     > [!NOTE]
-    > The type for fields id, sporting_event_id and ticketholder_id should be (double)
+    > The type for fields id, sporting_event_id and ticketholder_id should be double
 
     <div style="text-align: center"><img src="2-athena/img/6.png"/></div>
 
@@ -37,7 +37,7 @@
     ```
 
     > [!NOTE]
-    > If Run query button is not enabled, select the entire query and press Control + Enter to have it executed. This may happen in some browsers due to bug in this part of the web console. You can also re-load the page
+    > If Run query button is not enabled, select the entire query and press Control + Enter to have it executed. This may happen in some browsers due to bug in this part of the web console. You can also re-load the page.
 
     The results appear beneath the query window.
 

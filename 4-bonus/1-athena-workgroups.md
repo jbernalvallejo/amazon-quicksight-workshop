@@ -26,7 +26,7 @@ Now we will create workgroups.
     - Workgroup Name: “workgroupA”
 
     > [!NOTE]
-    > Please ensure workgroup names are provided with no types and same casing as otherwise future steps will fail
+    > Please ensure workgroup names are provided with no typos and same casing as otherwise future steps will fail
 
     - Description (optional):
         - “workgroupA for BusinessAnalystUser”
@@ -179,7 +179,7 @@ For per-workgroup data usage control, you can configure the maximum amount of da
 
     ![screenshot](img/27.png)
 
-2. Click on “Data usage Controls” and scroll down to section “Workgroup data usage controls”. Click on “Create workgroup data usage control”
+2. Click on “Data usage Controls” and scroll down to section “Workgroup data usage controls”. Click on “Create workgroup data usage control”.
 
     ![screenshot](img/28.png)
 
