@@ -7,6 +7,7 @@
   <meta name="description" content="Deliver insights to everyone in your organization">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+  <link rel="stylesheet" href="styles.css">
 
 <style>
   body .docsify-pagination-container {
@@ -60,9 +61,21 @@
         nextText: 'Next',
         crossChapter: true,
       },
+      plugins: [
+        function(hook, vm) {
+          hook.afterEach(function (html) {
+            var year = new Date().getFullYear();
+            var footer = 
+              '<section style="" id="footer">' +
+              `  <a href="https://aws.amazon.com/privacy/?nc1=f_pr" target="_blank">Privacy</a> | <a href="https://aws.amazon.com/terms/?nc1=f_pr" target="_blank">Site Terms</a> | © ${year}, Amazon Web Services, Inc. or its affiliates. All rights reserved.` + 
+              '</section>';
+            return `${html}${footer}`;
+          })
+        }
+      ]
     }
-
-        // offline mode will be available only if browser allows it
+   
+    // offline mode will be available only if browser allows it
     if (typeof navigator.serviceWorker !== 'undefined') {
       navigator.serviceWorker.register('sw.js')
     }
@@ -79,7 +92,5 @@
   <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/zoom-image.min.js"></script>
-
-
 </body>
 </html>
