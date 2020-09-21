@@ -6,7 +6,7 @@
 
 - Written with love
 
-[Get Started](1-welcome/1-introduction.md)
+[Get Started](init.md)
 
 <!-- background color -->
 

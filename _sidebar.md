@@ -1,6 +1,6 @@
 - Welcome
 
-  - [Introduction](1-welcome/1-introduction.md)
+  - [Introduction](init.md)
   - [Prerequisites](1-welcome/2-prerequisites.md)
   - [Initial Setup](1-welcome/3-initial-setup.md)
   
