@@ -279,13 +279,15 @@ Resources:
     Type: AWS::IAM::User   
     Properties:
       LoginProfile:
-        Password: master123
+        Password: "u6%+QF,)+4FG"
+        PasswordResetRequired: true
 
   WorkgroupManagerUser:
     Type: AWS::IAM::User   
     Properties:
       LoginProfile:
-        Password: master123  
+        Password: ";@idC&q)hUk8"
+        PasswordResetRequired: true
 
   BusinessAnalystUserPolicy:
     Type: AWS::IAM::Policy  

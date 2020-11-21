@@ -56,11 +56,11 @@ Now we will create workgroups.
 
 2. Note down 12 digit AWS account id. Follow steps here to find out account id - https://www.apn-portal.com/knowledgebase/articles/FAQ/Where-Can-I-Find-My-AWS-Account-ID
 
-3. Next, Open AWS console log-in different browser, select IAM user and login with following credential: 
+3. Next, Open AWS console log-in different browser, select IAM user and login with following credential:
 
     - AccountID
     - IAM User name (from the step above)
-    - Password: `master123`
+    - Password: `u6%+QF,)+4FG` (for security reasons, you will need to set up a new password after logging in)
 
 4. From new BusinessAnalystUser user, navigate to Athena console. You will notice that you can see your workgroup designated as “workgroupA” and you can also view table: sporting_event_info as shown below:
 
@@ -111,7 +111,7 @@ Now we will create workgroups.
 12.	Now, login as `workgroup_manager_user`.
     - Account ID
     - IAM User Name (something of the form `mod-XXX-WorkgroupManagerUser-YYY`)
-    - Password: `master123`
+    - Password: `;@idC&q)hUk8` (for security reasons, you will need to set up a new password after logging in)
 
     This user has access to workgroupA and workgroupB for management purposes. Go to Athena and try to View Details of primary workgroup. You will not be able to access the primary workgroup because this user does not have access to it.
 
